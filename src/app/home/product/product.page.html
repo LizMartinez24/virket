@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+
+    </ion-title>
+    <ion-buttons slot="end" routerLink="/home/list-product" routerDirection="root">
+      <ion-icon name="cart-outline" class="cart"></ion-icon>
+      <ion-badge color="danger">{{listProductService.productBuy.length}} </ion-badge>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img [src]="dataElement.image" class="imgProduct">
+    <div class="star-rating">
+      <span style.width="{{(dataElement.rating.rate * 2) * 10}}%"></span>
+    </div>
+    <div class="price"> $ {{dataElement.price | number : '1.2-2'}}</div>
+    <h1>{{dataElement.title}} </h1>
+    <h6> {{dataElement.description}}</h6>
+    <ion-button expand="block" color="secondary" (click)="buy(dataElement)"> Add Car </ion-button>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,68 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> {{search | uppercase }} </ion-title>
+    <ion-buttons slot="end" routerLink="/home/list-product" routerDirection="root">
+      <ion-icon name="cart-outline" class="cart"></ion-icon>
+      <ion-badge color="danger">{{listProductService.productBuy.length}} </ion-badge>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-tabs>
+    <ion-tab-bar slot="top" color="tertiary">
+      <ion-tab-button (click)="allList()" select>
+        <ion-icon name="globe-outline"></ion-icon> All
+      </ion-tab-button>
+      <ion-tab-button (click)="selected('men')">
+        <ion-icon name="male-outline"></ion-icon> Men's
+      </ion-tab-button>
+      <ion-tab-button (click)="selected('jewelery')">
+        <ion-icon name="diamond-outline"></ion-icon> Jewelery
+      </ion-tab-button>
+      <ion-tab-button (click)="selected('electronics')">
+        <ion-icon name="calculator-outline"></ion-icon> Electronics
+      </ion-tab-button>
+      <ion-tab-button (click)="selected('women')">
+        <ion-icon name="male-female-outline"></ion-icon> Women's
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+
+  <div id="container">
+    <div *ngIf="dataValue === 'load'">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6" *ngFor="let item of [].constructor(8)">
+            <ion-skeleton-text animated style="width: 98%; height: 178px;"></ion-skeleton-text>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div *ngIf="dataValue === 'success'" class="listProduct">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6" *ngFor="let product of listFilter">
+            <ion-card>
+              <img [src]="product.image" class="imgProduct">
+              <div class="price"> $ {{product.price | number : '1.2-2'}} </div>
+              <h6> {{product.title}} </h6>
+              <ion-row>
+                <ion-col size="12">
+                  <ion-button expand="block" routerLink="/home/id/{{product.id}}" routerDirection="root"
+                    color="secondary"> View
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div *ngIf="dataValue === 'error'" class="listProduct" (click)="getList()">
+      <ion-icon name="refresh-outline" class="icon"></ion-icon> <br>
+      Upss ocurrio un error vuelva a intentarlo
+    </div>
+  </div>
+</ion-content>

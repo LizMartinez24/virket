@@ -1,0 +1,38 @@
+<ion-content>
+  <div class="container">
+    <div class="login-logo">
+      <img src="assets\images\carrito.jpg" alt="Ionic logo">
+    </div>
+    <div class="w-100">
+      <ion-text color="danger" *ngIf="messageError"> {{messageError}} </ion-text>
+    </div>
+    <form #loginForm="ngForm" novalidate class="form">
+      <ion-item class="item">
+        <ion-label position="stacked" color="tertiary">Username</ion-label>
+        <ion-input [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false"
+          autocapitalize="off" required>
+        </ion-input>
+      </ion-item>
+      <ion-text color="danger" [hidden]="username.valid || submitted === false">
+        Username is required
+      </ion-text>
+      <ion-item class="item">
+        <ion-label position="stacked" color="tertiary">Password</ion-label>
+        <ion-input [(ngModel)]="login.password" name="password" type="password" #password="ngModel" required>
+        </ion-input>
+      </ion-item>
+      <ion-text color="danger" [hidden]="password.valid || submitted === false">
+        Password is required
+      </ion-text>
+      <ion-button (click)="onLogin(loginForm)" type="submit" expand="block" color="secondary">Login</ion-button>
+    </form>
+    <div style="text-align: center;">
+      <ion-button (click)="fbook()" expand="fill" color="primary">
+        <ion-icon name="logo-facebook"></ion-icon>&nbsp; Faccebook
+      </ion-button><br>
+      <ion-button (click)="google()" expand="fill" color="primary">
+        <ion-icon name="logo-google"></ion-icon>&nbsp; Google
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

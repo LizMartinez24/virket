@@ -1,0 +1,44 @@
+
+$ratingSize: 100px;
+.star-rating {
+  height: ($ratingSize/5);
+  position: relative;
+  width: $ratingSize;
+  &:before {
+    // inactive
+    background-image: url("./assets/images/startGray.svg");
+    background-repeat: repeat-x;
+    background-size: ($ratingSize/5);
+    bottom: 0;
+    content: "";
+    display: block;
+    height: ($ratingSize/5);
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: $ratingSize;
+  } > span {
+    display: block;
+    text-indent: -10000px;
+    width: $ratingSize;
+    height: ($ratingSize/5);
+    position: absolute;
+    overflow: hidden;
+    &:before {
+      // active
+      background-image: url("./assets/images/startYellow.svg");
+      background-repeat: repeat-x;
+      background-size: ($ratingSize/5);
+      bottom: 0;
+      content: "";
+      display: block;
+      height: ($ratingSize/5);
+      left: 0;
+      position: absolute;
+      right: 0;
+      text-indent: 10000px;
+      top: 0;
+    }
+  }
+}

@@ -1,0 +1,59 @@
+<ion-header></ion-header>
+
+<ion-content>
+ 
+  <div>
+    <form id="form-checkout">
+      <img src="assets/images/mercado.png" alt="" class="w-100" />
+      <div class="form">
+        <p class="text-right">Total: $ {{listProductService.total()}}</p>
+        <ion-row>
+          <ion-col size="12">
+            <input type="text" name="cardNumber" id="form-checkout__cardNumber" maxlength="16"/><br />
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4">
+            <input type="text" name="cardExpirationMonth" id="form-checkout__cardExpirationMonth" maxlength="2" />
+          </ion-col>
+          <ion-col size="4">
+            <input type="text" name="cardExpirationYear" id="form-checkout__cardExpirationYear" maxlength="2" />
+          </ion-col>
+          <ion-col size="4">
+            <input type="text" name="securityCode" id="form-checkout__securityCode" maxlength="3" />
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6">
+            <input type="text" name="cardholderName" id="form-checkout__cardholderName" />
+          </ion-col>
+          <ion-col size="6">
+            <input type="email" name="cardholderEmail" id="form-checkout__cardholderEmail" />
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6">
+            <select name="identificationType" id="form-checkout__identificationType"></select>
+          </ion-col>
+          <ion-col size="6">
+            <input type="text" name="identificationNumber" id="form-checkout__identificationNumber" />
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="6">
+            <select name="issuer" id="form-checkout__issuer"></select>
+          </ion-col>
+          <ion-col size="6">
+            <select name="installments" id="form-checkout__installments"></select>
+          </ion-col>
+        </ion-row>
+        <progress value="0" class="progress-bar">Cargando...</progress>
+        <div class="textError">
+          <p *ngFor="let err of errorMercado">{{err.message}}</p>
+        </div>
+        <button type="submit" id="form-checkout__submit" >Pagar</button><br />
+      </div>
+    </form>
+  </div>
+</ion-content>
